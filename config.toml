@@ -3,7 +3,7 @@ baseURL = "https://cloud1998.github.io/"
 defaultContentLanguage = "zh-cn"
 # 网站语言, 仅在这里 CN 大写
 languageCode = "zh-CN"
-# 是否包括中日韩文字
+# 字数统计是否包括日韩中文字
 hasCJKLanguage = true
 # 网站标题
 title = "Cloud's blog"
@@ -34,7 +34,14 @@ theme = "LoveIt"
     url = "/categories/"
     title = ""
     weight = 3
-
+  [[menu.main]]
+    identifier = "about"
+    pre = ""
+    name = "关于"
+    url = "/about/"
+    title = ""
+    weight = 4
+		
 [params]
   # LoveIt 主题版本
   version = "0.1.X"
@@ -125,8 +132,8 @@ theme = "LoveIt"
 	# Valine 评论系统设置 (https://github.com/xCss/Valine)
     [params.comment.valine]
       enable = false
-      appId = ""
-      appKey = ""
+      appId = "5es576aStqC7EMoxkqvJ7OmA-9Nh9j0Va"
+      appKey = "EliLEQ8be8QrvikAkI5fbPYA"
       placeholder = "说点什么吧 ..."
       notify = false
       verify = true
