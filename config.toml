@@ -51,6 +51,8 @@ theme = "LoveIt"
   keywords = ["Theme", "Hugo"]
   # 网站默认主题样式 ("light", "dark", "auto")
   defaultTheme = "auto"
+	toc = true
+	autoCollapseToc = false
 	
   # 页面头部导航栏信息
 	[params.header]
