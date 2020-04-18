@@ -12,7 +12,7 @@
 		* vector.push_back();
 		* vector.resize();
 		* vector.begin(); / vector.end();
-	
+
 ### 1.2 set
 	特点:单一的，有序的元素（从小到大）
 	 使用:# include <set>
@@ -21,7 +21,7 @@
 		* set.erase();
 		* set.find();
 		* set.begin(); / set.end();
-	
+
 #### 1.2.1 unordered_set
 	特点:不排序的 set
 	 使用:# include <unordered_set>
@@ -39,7 +39,7 @@
 #### 1.3.1 unordered_map
 	特点:不排序的 map
 	 使用:# include <unordered_map>
-	
+
 ### 1.4 stack
 	特点:堆栈，先进后出
 	 使用:# include <stack>
@@ -48,7 +48,8 @@
 		* stack.pop();
 		* stack.top();
 		* stack.size();
-	
+		* stack.empty();
+
 ### 1.5 queue
 	特点:队列，一头进，一头出，先进先出
 	 使用:# include <queue>
@@ -57,7 +58,7 @@
 		* queue.pop();
 		* queue.front(); / queue.back();
 		* queue.size();
-	
+
 ## 2. 引用
 ```C++
 void Test(int &temp){

@@ -1,0 +1,92 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>【乙级】1008 数组元素循环右移问题（20） | Cloud&#39;s blog</title><meta name=Description content="Cloud的个人博客，包括数据结构、算法的学习记录，考研相关，生活相关"><meta property="og:title" content="【乙级】1008 数组元素循环右移问题（20）"><meta property="og:description" content="一个数组*A*中存有*N*（&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移*M*（≥0）个位置，即将*A*中的数据由"><meta property="og:type" content="article"><meta property="og:url" content="https://cloud1998.github.io/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98/"><meta property="article:published_time" content="2016-03-02T00:00:00+00:00"><meta property="article:modified_time" content="2016-03-02T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="【乙级】1008 数组元素循环右移问题（20）"><meta name=twitter:description content="一个数组*A*中存有*N*（&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移*M*（≥0）个位置，即将*A*中的数据由"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=canonical href=https://cloud1998.github.io/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98/><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=next href=https://cloud1998.github.io/%E7%94%A8c-%E5%88%B7%E7%AE%97%E6%B3%95/><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><link rel=stylesheet href=/css/style.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"【乙级】1008 数组元素循环右移问题（20）","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/cloud1998.github.io\/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98\/"},"image":{"@type":"ImageObject","url":"https:\/\/cloud1998.github.io\/cover.png","width":800,"height":600},"genre":"posts","keywords":"PAT乙级","wordcount":975,"url":"https:\/\/cloud1998.github.io\/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98\/","datePublished":"2016-03-02","dateModified":"2016-03-02","publisher":{"@type":"Organization","name":"Cloud","logo":{"@type":"ImageObject","url":"https:\/\/cloud1998.github.io\/logo.png","width":127,"height":40}},"author":{"@type":"Person","name":"Cloud"},"description":""}</script></head><body><script>if(!window.localStorage||!window.localStorage.getItem('theme')){window.isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;}else{window.isDark=(window.localStorage&&window.localStorage.getItem('theme'))==='dark';}
+window.isDark&&document.body.classList.add('dark-theme');</script><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/>Cloud&#39;s blog</a></div><div class=menu><a class=menu-item href=/posts/ rel="noopener noreffer">文章</a><a class=menu-item href=/tags/ rel="noopener noreffer">标签</a><a class=menu-item href=/categories/ rel="noopener noreffer">分类</a><a class=menu-item href=/about/ rel="noopener noreffer">关于</a><span class=menu-item>|</span>
+<a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></header><header class=mobile id=header-mobile><div class=header-wrapper><div class=header-container><div class=header-title><a href=/>Cloud&#39;s blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><a class=menu-item href=/posts/ rel="noopener noreffer">文章</a><a class=menu-item href=/tags/ rel="noopener noreffer">标签</a><a class=menu-item href=/categories/ rel="noopener noreffer">分类</a><a class=menu-item href=/about/ rel="noopener noreffer">关于</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><script>window.desktopHeaderMode="fixed";window.mobileHeaderMode="auto";</script><main class=main><div class=container><article class="page single"><h1 class="single-title animated flipInX">【乙级】1008 数组元素循环右移问题（20）</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=https://cloud1998.github.io/about/ title=Author target=_blank rel="noopener noreffer author" class=author><i class="fas fa-user-circle fa-fw"></i>Cloud</a>
+</span>&nbsp;
+<span class=post-category>收录于<a href=/categories/pat>
+<i class="far fa-folder fa-fw"></i>P a t</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i><time datetime=2016-03-02>2016-03-02</time>&nbsp;
+<i class="fas fa-pencil-alt fa-fw"></i>约 975 字&nbsp;
+<i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;<span id=/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98/ class=leancloud_visitors data-flag-title="【乙级】1008 数组元素循环右移问题（20）">
+<i class="far fa-eye fa-fw"></i><span class=leancloud-visitors-count></span>&nbsp;次阅读
+</span>&nbsp;</div></div><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class="toc-content always-active" id=toc-content-auto></div></div><div class=toc id=toc-static><details><summary><div class=toc-title><span>目录</span>
+<span><i class="details icon fas fa-angle-down"></i></span></div></summary><div class=toc-content id=toc-content-static><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#输入格式>输入格式:</a></li><li><a href=#输出格式>输出格式:</a></li><li><a href=#输入样例>输入样例:</a></li><li><a href=#输出样例>输出样例:</a></li></ul></li></ul></li></ul></nav></div></details></div><div class=content id=content><p>一个数组*A*中存有*N*（&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移*M*（≥0）个位置，即将*A*中的数据由（*A*0*A*1⋯*A<strong>N*−1）变换为（*A</strong>N*−*M*⋯*A<strong>N*−1*A*0*A*1⋯*A</strong>N*−*M*−1）（最后*M*个数循环移至最前面的*M*个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？</p><h3 id=输入格式>输入格式:</h3><p>每个输入包含一个测试用例，第1行输入*N*（1 ≤ <em>N</em> ≤ 100）和*M*（≥ 0）；第2行输入*N*个整数，之间用空格分隔。</p><h3 id=输出格式>输出格式:</h3><p>在一行中输出循环右移 <em>M</em> 位以后的整数序列，之间用空格分隔，序列结尾不能有多余空格。</p><h3 id=输入样例>输入样例:</h3><pre><code class=language-in>6 2
+1 2 3 4 5 6
+</code></pre><h3 id=输出样例>输出样例:</h3><pre><code class=language-out>5 6 1 2 3 4
+</code></pre><p>分析： 若 M ＜ N，则移动 M 个。若 M = N，则不用移动。若 M ＞ N，则移动 M % N 个。我选择了分两次读入，第一次读入 M - N 个数，存储在 N 到 M - 1 的位置。第二次读入 N 个数，存储在 0 到 N - 1 的位置，下面附上第一次代码：</p><pre><code class=language-c++># include &lt;iostream&gt;
+# include &lt;vector&gt;
+using namespace std;
+int main()
+{
+    int M, N;
+    cin &gt;&gt; N &gt;&gt; M;
+    vector&lt;int&gt; v(N);
+    int flag = N == M ? 0 : N &gt; M ? 1 : 2;	/* 0 代表 N = M, 1 代表 N &gt; M, 2 代表 N &lt; M */
+    switch(flag){
+        case 0:
+            for(int i = 0; i &lt; N; i++)	/* N = M 直接读取就好 */
+                cin &gt;&gt; v[i];
+            break;
+        case 1:
+            for(int i = M; i &lt; N; i++)	/* N &gt; M 第一次读取，从 M 开始，到 N-1 结束 */
+                cin &gt;&gt; v[i];
+            for(int i = 0; i &lt; M; i++)	/* N &gt; M 第二次读取，从 0 开始，到 M-1 结束 */
+                cin &gt;&gt; v[i];
+            break;
+        case 2:
+            M %= N;
+            for(int i = M; i &lt; N; i++)	/* N &lt; M 第一次读取，从 M 开始，到 N-1 结束 */
+                cin &gt;&gt; v[i];
+            for(int i = 0; i &lt; M; i++)	/* N &lt; M 第二次读取，从 0 开始，到 M-1 结束 */
+                cin &gt;&gt; v[i];
+            break;
+    }
+    for(int i = 0; i &lt; N - 1; i++)		/* 输出 */
+        cout &lt;&lt; v[i] &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; v[N - 1];
+    return 0;
+}
+</code></pre><p>读了柳神的解法之后，我将自己的代码精简了一下：</p><pre><code class=language-c++># include &lt;iostream&gt;
+# include &lt;vector&gt;
+using namespace std;
+int main()
+{
+    int m, n;
+    cin &gt;&gt; n &gt;&gt; m;
+    vector&lt;int&gt; v(n);
+    m %= n;
+    if( m != 0){	/* m &lt; 0 或 m &gt; 0 的情况 */
+        for(int i = m; i &lt; n; i++)	/* 第一次读取，从 m 开始，到 n-1 结束 */
+            cin &gt;&gt; v[i];
+        for(int i = 0; i &lt; m; i++)	/* 第二次读取，从 0 开始，到 m-1 结束 */
+            cin &gt;&gt; v[i];
+    }else{	/* m = 0 的情况 */
+		for(int i = 0; i &lt; n; i++)	/* 顺序读取 */
+            cin &gt;&gt; v[i];
+    }
+    for(int i = 0; i &lt; n - 1; i++)
+        cout &lt;&lt; v[i] &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; v[n - 1];
+    return 0;
+}
+</code></pre><p>附上柳神的解法 <a href=http://www.liuchuo.net/archives/522>原文地址</a>：</p><pre><code class=language-c++>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+int main() {
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    vector&lt;int&gt; a(n);
+    for (int i = 0; i &lt; n; i++)
+        cin &gt;&gt; a[i];
+    m %= n;
+    if (m != 0) {
+        reverse(begin(a), begin(a) + n);
+        reverse(begin(a), begin(a) + m);
+        reverse(begin(a) + m, begin(a) + n);
+    }
+    for (int i = 0; i &lt; n - 1; i++)
+        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; a[n - 1];
+    return 0;
+}
+</code></pre><p>总结：</p><p>​ 当代码的冗余度较高的时候，则应将重复代码写到一起，而后改进自己的算法，进一步抽象自己的解。</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>本文于 2016-03-02 更新</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98/index.md target=_blank>阅读原始文档</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://cloud1998.github.io/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98/ data-title="【乙级】1008 数组元素循环右移问题（20）" data-hashtags=PAT乙级><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://cloud1998.github.io/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98/ data-hashtag=PAT乙级><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://cloud1998.github.io/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98/ data-title="【乙级】1008 数组元素循环右移问题（20）"><i class="fab fa-weibo fa-fw"></i></a><a href=javascript:void(0); title="分享到 Evernote" data-sharer=evernote data-url=https://cloud1998.github.io/%E4%B9%99%E7%BA%A71008-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB%E9%97%AE%E9%A2%98/ data-title="【乙级】1008 数组元素循环右移问题（20）"><i class="fab fa-evernote fa-fw"></i></a></span></div></div></div><div class=post-info-more><section><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/pat%E4%B9%99%E7%BA%A7>PAT乙级</a></section><section><span><a href=javascript:window.history.back();>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/%E7%94%A8c-%E5%88%B7%E7%AE%97%E6%B3%95/ class=next rel=next title="C&#43;&#43; - 容器">C&#43;&#43; - 容器<i class="fas fa-angle-right fa-fw"></i></a></div></div><div class=comment><div id=valine></div><script>document.addEventListener("DOMContentLoaded",function(event){new Valine({el:'#valine',appId:'5es576aStqC7EMoxkqvJ7OmA-9Nh9j0Va',appKey:'EliLEQ8be8QrvikAkI5fbPYA',placeholder:'说点什么吧 ...',verify:true,avatar:'mp',pageSize:10,lang:'en',visitor:true,recordIP:true,});});</script><noscript>Please enable JavaScript to view the <a href=https://valine.js.org/>comments powered by Valine.</a></noscript></div></article></div></main><footer class=footer><div class=copyright><div class=copyright-line>由 <a href=https://gohugo.io/ target=_blank rel="external nofollow noopener noreffer">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="external nofollow noopener noreffer"><i class="far fa-heart fa-fw"></i>LoveIt</a></div><div class=copyright-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2020</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=https://cloud1998.github.io/about/ target=_blank>Cloud</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><a href=# class="dynamic-to-top animated faster" id=dynamic-to-top><i class="fas fa-chevron-up fa-fw"></i></a><script>document.addEventListener('DOMContentLoaded',function(){lightGallery(document.getElementById('content'),{selector:'.lightgallery',speed:400,hideBarsDelay:2000,thumbnail:true,exThumbImage:'data-thumbnail',thumbWidth:80,thumbContHeight:80,});});</script><link rel=stylesheet href=/lib/valine/valine.css><link rel=stylesheet href=/lib/lightgallery/lightgallery.min.css><script src=/lib/valine/Valine.min.js></script><script src=/lib/smooth-scroll/smooth-scroll.polyfills.min.js></script><script src=/lib/sharer/sharer.min.js></script><script src=/lib/lazysizes/lazysizes.min.js></script><script src=/lib/lightgallery/lightgallery.min.js></script><script src=/lib/lightgallery/lg-thumbnail.min.js></script><script src=/lib/lightgallery/lg-zoom.min.js></script><script src=/js/theme.min.js></script></body></html>
