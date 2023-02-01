@@ -4,7 +4,6 @@ date: 2023-01-30
 tags: [博客搭建]
 categories: [编程技术]
 slug: Hugo blog-build personal blog
-
 ---
 
 [Hugo](https://gohugo.io/) 是由 Go 语言实现的静态网站生成器，可以快速建立一个静态网站，虽然多数情况下用来搭建个人博客，但也可以用作展示在线书籍、个人简历等。
