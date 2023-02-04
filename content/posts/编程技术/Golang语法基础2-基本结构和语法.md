@@ -8,6 +8,8 @@ slug: golang basic grammar 2 basic structure and grammar
 
 本文介绍 Go 中的基本程序结构和语法。让我们从经典的 HelloWorld 程序开始。
 
+<!--more-->
+
 ```go
 package main
 
