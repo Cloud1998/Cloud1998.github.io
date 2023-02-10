@@ -1,0 +1,326 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Golang语法基础4-运算符与流程控制 - Cloud1998's blog</title><meta name=Description content="这是我的全新 Hugo 网站"><meta property="og:title" content="Golang语法基础4-运算符与流程控制"><meta property="og:description" content="本文介绍 Golang 中的运算符和流程控制。"><meta property="og:type" content="article"><meta property="og:url" content="http://Cloud1998.github.io/golang%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%804-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/"><meta property="og:image" content="http://Cloud1998.github.io/logo.png"><meta property="article:published_time" content="2023-02-10T00:00:00+00:00"><meta property="article:modified_time" content="2023-02-10T00:00:00+00:00"><meta property="og:site_name" content="我的网站"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://Cloud1998.github.io/logo.png"><meta name=twitter:title content="Golang语法基础4-运算符与流程控制"><meta name=twitter:description content="本文介绍 Golang 中的运算符和流程控制。"><meta name=application-name content="我的网站"><meta name=apple-mobile-web-app-title content="我的网站"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://Cloud1998.github.io/golang%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%804-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/><link rel=prev href=http://Cloud1998.github.io/golang%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%803-%E5%B8%B8%E9%87%8F%E5%8F%98%E9%87%8F%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=/lib/fontawesome-free/all.min.css as=style onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.css></noscript><link rel=preload href=/lib/animate/animate.min.css as=style onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel=stylesheet href=/lib/animate/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Golang语法基础4-运算符与流程控制","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/Cloud1998.github.io\/golang%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%804-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6\/"},"genre":"posts","keywords":"Golang语法基础","wordcount":3018,"url":"http:\/\/Cloud1998.github.io\/golang%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%804-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6\/","datePublished":"2023-02-10T00:00:00+00:00","dateModified":"2023-02-10T00:00:00+00:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"Ge Yunfei"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="Cloud1998's blog">Cloud1998's Blog</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/about/>关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop><input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="Cloud1998's blog">Cloud1998's Blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/posts/>所有文章</a><a class=menu-item href=/tags/>标签</a><a class=menu-item href=/categories/>分类</a><a class=menu-item href=/about/>关于</a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Golang语法基础4-运算符与流程控制</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Ge Yunfei</a></span>&nbsp;<span class=post-category>included in <a href=/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/><i class="far fa-folder fa-fw" aria-hidden=true></i>编程技术</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2023-02-10>2023-02-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;3018 words&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;7 minutes&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#1-运算符>1. 运算符</a></li><li><a href=#2-控制结构>2. 控制结构</a><ul><li><a href=#21-if-else-结构>2.1 if-else 结构</a></li><li><a href=#22-switch-结构>2.2 switch 结构</a></li><li><a href=#23-for-结构>2.3 for 结构</a></li><li><a href=#24-for-ranges-结构>2.4 for-ranges 结构</a></li></ul></li><li><a href=#3-辅助语句>3. 辅助语句</a></li></ul></nav></div></div><div class=content id=content><p>本文介绍 Golang 中的运算符和流程控制。</p><h2 id=1-运算符>1. 运算符</h2><p>Go 语言的运算符有 6 种，如下表所示：</p><table><thead><tr><th align=center>运算符类型</th><th align=center>运算符</th></tr></thead><tbody><tr><td align=center>算术运算符</td><td align=center>+，-，*，/，%，++，–</td></tr><tr><td align=center>关系运算符</td><td align=center>==，!=，>，&lt;，>=，&lt;=</td></tr><tr><td align=center>逻辑运算符</td><td align=center>&&，||，!</td></tr><tr><td align=center>位运算符</td><td align=center>&，|，^，«，»，&^</td></tr><tr><td align=center>赋值运算符</td><td align=center>=，+=，-=，*=，/=，%=，«=，»=，&=，^=，!=</td></tr><tr><td align=center>其它运算符</td><td align=center>&，*</td></tr></tbody></table><p>基本的运算规则都与 C 语言相同，一些注意事项列举如下：</p><ol><li><p>算术运算符中自增自减运算符只能作为语句使用，不能用于表达式：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=nx>a</span><span class=o>++</span> <span class=c1>// 允许
+</span><span class=c1></span><span class=nx>a</span><span class=o>--</span> <span class=c1>// 允许
+</span><span class=c1></span><span class=nx>a</span> <span class=p>=</span> <span class=nx>a</span><span class=o>++</span> <span class=c1>//不允许，编译错误
+</span><span class=c1></span><span class=nx>a</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span> <span class=p>=</span> <span class=nx>b</span><span class=p>[</span><span class=nx>i</span><span class=o>++</span><span class=p>]</span> <span class=c1>//不允许，编译错误
+</span></code></pre></td></tr></table></div></div></li><li><p>整数除以 0 会导致编译错误，如果编译时未检出会导致程序崩溃。浮点数除以 0.0 会返回无穷大，用<code>+Inf</code>表示。</p></li><li><p>逻辑运算符具有短路效果，即当逻辑运算符左边表达式的值已经能够决定整个表达式的值的时候逻辑运算符右边的表达式将不会被执行。</p></li><li><p>位运算符是对整数在内存中的二进制位进行操作的，它只能用于整数类型的变量，且需它们拥有等长位模式。</p><p>假定 A = 60，B = 13，则</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=nx>A</span> <span class=p>=</span> <span class=mo>0011</span> <span class=mi>1100</span>
+<span class=nx>B</span> <span class=p>=</span> <span class=mo>0000</span> <span class=mi>1101</span>
+   
+<span class=nx>A</span> <span class=o>&amp;</span> <span class=nx>B</span> <span class=p>=</span> <span class=mo>0000</span> <span class=mi>1100</span> <span class=c1>// 结果为12
+</span><span class=c1></span><span class=nx>A</span> <span class=p>|</span> <span class=nx>B</span> <span class=p>=</span> <span class=mo>0011</span> <span class=mi>1101</span> <span class=c1>// 结果为61
+</span><span class=c1></span><span class=nx>A</span> <span class=p>^</span> <span class=nx>B</span> <span class=p>=</span> <span class=mo>0011</span> <span class=mo>0001</span> <span class=c1>// 结果为49
+</span><span class=c1></span><span class=nx>A</span> <span class=o>&lt;&lt;</span> <span class=mi>2</span> <span class=p>=</span> <span class=mi>1111</span> <span class=mo>0000</span> <span class=c1>// 结果为240
+</span><span class=c1></span><span class=nx>A</span> <span class=o>&gt;&gt;</span> <span class=mi>2</span> <span class=p>=</span> <span class=mo>0000</span> <span class=mi>1111</span> <span class=c1>// 结果为15
+</span></code></pre></td></tr></table></div></div></li><li><p>其它运算符中的<code>&</code>是取地址符，<code>*</code>是指针变量。</p></li></ol><p>运算符的优先级是不同的，下表从上往下代表优先级从高到低：</p><table><thead><tr><th align=center>优先级</th><th>运算符</th></tr></thead><tbody><tr><td align=center>7</td><td>^ !</td></tr><tr><td align=center>6</td><td>* / % &#171; &#187; & &^</td></tr><tr><td align=center>5</td><td>+ - | ^</td></tr><tr><td align=center>4</td><td>== != &lt; &lt;= > >=</td></tr><tr><td align=center>3</td><td>&lt;-</td></tr><tr><td align=center>2</td><td>&&</td></tr><tr><td align=center>1</td><td>||</td></tr></tbody></table><p>二元运算符的运算方向均是从左到右，必要时可以使用括号提升优先级或更清楚地表达。</p><h2 id=2-控制结构>2. 控制结构</h2><p>除去顺序结构外，Go 语言提供的基本流程控制结构包括</p><ul><li>条件结构<ul><li>if-else 结构</li><li>switch 结构</li><li>select 结构，用于 channel 的选择（协程与通道部分）</li></ul></li><li>循环结构<ul><li>for</li><li>for-range</li></ul></li></ul><p>同时，Go 还提供了关键字<code>break</code>、<code>continue</code>和<code>goto</code>用来辅助进行流程控制，以及<code>return</code>语句提前结束执行。</p><div class="details admonition warning open"><div class="details-summary admonition-title"><i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden=true></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden=true></i></div><div class=details-content><div class=admonition-content><ol><li>在这些结构中，Go 都省略了条件语句两侧的小括号，使视觉上更加简洁。</li><li>除<code>case</code>关键字后的语句，即使代码块只有一行，大括号也不可省略</li><li>左大括号必须和关键字在同一行，对多分支结构中的<code>else</code>关键字，右大括号也要和它在一行。这两条规则是编译器的强制规定。</li></ol></div></div></div><h3 id=21-if-else-结构>2.1 if-else 结构</h3><p>if-else 结构的基本形态与C语言相同。可以省略<code>else</code>关键字变成单分支结构，也可以添加<code>else if</code>变成多分支，但为了代码简洁，过多的分支最好换用 switch 结构实现。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>if</span> <span class=nx>condition1</span> <span class=p>{</span>
+    <span class=c1>// do something
+</span><span class=c1></span><span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+    <span class=c1>// do something else
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>当双分支结构在代码块的末尾时，通常会将 else 中原本的代码块迁移出来放在最后，如：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>if</span> <span class=nx>condition</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=kc>true</span>
+<span class=p>}</span>
+<span class=k>return</span> <span class=kc>false</span>
+</code></pre></td></tr></table></div></div><p>Go 中 if 还可以在条件语句前添加一个初始化语句，以分号分隔：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>if</span> <span class=nx>initialization</span><span class=p>;</span> <span class=nx>condition</span> <span class=p>{</span>
+	<span class=c1>// do something
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>例如：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>if</span> <span class=nx>val</span> <span class=o>:=</span> <span class=mi>10</span><span class=p>;</span> <span class=nx>val</span> <span class=p>&gt;</span> <span class=nx>max</span> <span class=p>{</span>
+	<span class=c1>// do something
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>但需要注意的时，使用简短方式 <code>:=</code> 声明和初始化的变量作用域只限于 if 结构的代码块内，属于局部变量。</p><p>由于 Go 语言并行赋值的特性，if 语句经常用于测试多返回值函数的错误。返回某个值以及 true 表示成功，返回零值（或 nil）以及 false 表示失败：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>if</span> <span class=nx>value</span><span class=p>,</span> <span class=nx>ok</span> <span class=o>:=</span> <span class=nf>readData</span><span class=p>(</span><span class=p>)</span><span class=p>;</span> <span class=nx>ok</span> <span class=p>{</span>
+	<span class=o>...</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>当不使用 true 或 false 时，也可以使用一个 error 类型的变量来代替作为第二个返回值，成功执行，则 error 的值为 nil；否则执行失败，返回的值会包含相应的错误信息：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=kd>var</span> <span class=nx>err</span> <span class=kt>error</span>
+<span class=k>if</span> <span class=nx>err</span> <span class=o>:=</span> <span class=nx>file</span><span class=p>.</span><span class=nf>Chmod</span><span class=p>(</span><span class=mo>0664</span><span class=p>)</span><span class=p>;</span> <span class=nx>err</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
+	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nx>err</span><span class=p>)</span>
+	<span class=k>return</span> <span class=nx>err</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><h3 id=22-switch-结构>2.2 switch 结构</h3><p>switch 结构的基本形态依然同 C 语言相同：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>switch</span> <span class=nx>var1</span> <span class=p>{</span>
+	<span class=k>case</span> <span class=nx>val1</span><span class=p>:</span>
+		<span class=o>...</span>
+	<span class=k>case</span> <span class=nx>val2</span><span class=p>:</span>
+		<span class=o>...</span>
+	<span class=k>default</span><span class=p>:</span>
+		<span class=o>...</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>不同的是，Go 中 switch 语句接受任意形式的表达式，如上例中 var1 可以是任何类型，而 val1 和 val2 可以是同类型的任意值，不局限于数值。</p><p>可以同时测试多个可能符合条件的值，使用逗号分隔，例如<code>case val1, val2, val3</code></p><p>每个<code>case</code>分支都是唯一的，从上到下逐一测试，一旦成功匹配到某个分支，执行完对应的代码块后会<strong>自动退出</strong>整个 switch 结构，而不需要使用<code>break</code>结束。因此，程序不会自动的去执行剩下的 case 分支的代码，如果想继续执行，需要使用 <code>fallthrough</code> 关键字：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>switch</span> <span class=nx>i</span> <span class=p>{</span>
+	<span class=k>case</span> <span class=mi>0</span><span class=p>:</span> <span class=k>fallthrough</span>
+	<span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
+		<span class=nf>f</span><span class=p>(</span><span class=p>)</span> <span class=c1>// 当 i == 0 时函数也会被调用
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></td></tr></table></div></div><div class="details admonition warning open"><div class="details-summary admonition-title"><i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden=true></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden=true></i></div><div class=details-content><div class=admonition-content><code>fallthrough</code> 语句执行后，就不会再判断变量 i 是否满足分支，后续所有分支内的代码均会被无条件执行！</div></div></div><p>case 语句后不需要用大括号包围代码块，default 分支可以出现在任何顺序，但最好放在最后：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=kn>package</span> <span class=nx>main</span>
+
+<span class=kn>import</span> <span class=s>&#34;fmt&#34;</span>
+
+<span class=kd>func</span> <span class=nf>main</span><span class=p>(</span><span class=p>)</span> <span class=p>{</span>
+	<span class=kd>var</span> <span class=nx>num1</span> <span class=kt>int</span> <span class=p>=</span> <span class=mi>100</span>
+
+	<span class=k>switch</span> <span class=nx>num1</span> <span class=p>{</span>
+        <span class=k>case</span> <span class=mi>98</span><span class=p>,</span> <span class=mi>99</span><span class=p>:</span>
+            <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;It&#39;s equal to 98&#34;</span><span class=p>)</span>
+        <span class=k>case</span> <span class=mi>100</span><span class=p>:</span> 
+            <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;It&#39;s equal to 100&#34;</span><span class=p>)</span>
+        <span class=k>default</span><span class=p>:</span>
+            <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;It&#39;s not equal to 98 or 100&#34;</span><span class=p>)</span>
+	<span class=p>}</span>
+<span class=p>}</span>
+<span class=c1>//Output:
+</span><span class=c1></span><span class=c1>//It&#39;s equal to 100
+</span></code></pre></td></tr></table></div></div><p>switch 可以不提供条件语句，然后在每个 case 分支测试不同条件，可以替换分支比较多的if-else结构，简化代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>switch</span> <span class=p>{</span>
+	<span class=k>case</span> <span class=nx>i</span> <span class=p>&lt;</span> <span class=mi>0</span><span class=p>:</span>
+		<span class=nf>f1</span><span class=p>(</span><span class=p>)</span>
+	<span class=k>case</span> <span class=nx>i</span> <span class=o>==</span> <span class=mi>0</span><span class=p>:</span>
+		<span class=nf>f2</span><span class=p>(</span><span class=p>)</span>
+	<span class=k>case</span> <span class=nx>i</span> <span class=p>&gt;</span> <span class=mi>0</span><span class=p>:</span>
+		<span class=nf>f3</span><span class=p>(</span><span class=p>)</span>
+    <span class=k>default</span><span class=p>:</span>
+    	<span class=o>...</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>switch的条件语句还可以是初始化语句：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>switch</span> <span class=nx>a</span><span class=p>,</span> <span class=nx>b</span> <span class=o>:=</span> <span class=nx>x</span><span class=p>[</span><span class=nx>i</span><span class=p>]</span><span class=p>,</span> <span class=nx>y</span><span class=p>[</span><span class=nx>j</span><span class=p>]</span> <span class=p>{</span>
+	<span class=k>case</span> <span class=nx>a</span> <span class=p>&lt;</span> <span class=nx>b</span><span class=p>:</span> <span class=nx>t</span> <span class=p>=</span> <span class=o>-</span><span class=mi>1</span>
+	<span class=k>case</span> <span class=nx>a</span> <span class=o>==</span> <span class=nx>b</span><span class=p>:</span> <span class=nx>t</span> <span class=p>=</span> <span class=mi>0</span>
+	<span class=k>case</span> <span class=nx>a</span> <span class=p>&gt;</span> <span class=nx>b</span><span class=p>:</span> <span class=nx>t</span> <span class=p>=</span> <span class=mi>1</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><h3 id=23-for-结构>2.3 for 结构</h3><p>Go 中只有 for 用于循环结构，没有 C 中的 while 或 do while，基本形态如下：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>for</span> <span class=nx>初始化语句</span><span class=p>;</span> <span class=nx>条件语句</span><span class=p>;</span> <span class=nx>修饰语句</span> <span class=p>{</span>
+    <span class=o>...</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>同样，for 关键字后的三个语句不需要小括号，左大括号需和关键字在同一行：</p><p>可以只保留条件语句，这种情况下可以去掉所有分号，大致等同于其它语言的 while 循环：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=kn>package</span> <span class=nx>main</span>
+
+<span class=kn>import</span> <span class=s>&#34;fmt&#34;</span>
+
+<span class=kd>func</span> <span class=nf>main</span><span class=p>(</span><span class=p>)</span> <span class=p>{</span>
+	<span class=kd>var</span> <span class=nx>i</span> <span class=kt>int</span> <span class=p>=</span> <span class=mi>5</span>
+
+	<span class=k>for</span> <span class=nx>i</span> <span class=o>&gt;=</span> <span class=mi>0</span> <span class=p>{</span>
+		<span class=nx>i</span> <span class=p>=</span> <span class=nx>i</span> <span class=o>-</span> <span class=mi>1</span>
+		<span class=nx>fmt</span><span class=p>.</span><span class=nf>Printf</span><span class=p>(</span><span class=s>&#34;The variable i is now: %d\n&#34;</span><span class=p>,</span> <span class=nx>i</span><span class=p>)</span>
+	<span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>或者省略条件语句，但必须在循环体中存在条件判断以确保在某个时候退出循环，退出可以使用<code>break</code>或<code>return</code>：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=p>;</span> <span class=nx>i</span><span class=o>++</span> <span class=p>{</span>
+    <span class=o>...</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>或者三条语句全部省略，但同样需要在循环体中添加退出条件：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>for</span> <span class=p>{</span>
+    <span class=o>...</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><h3 id=24-for-ranges-结构>2.4 for-ranges 结构</h3><p>这是 Go 中特有的迭代结构，可以迭代数组、切片、map、字符串等任意一个集合，一般形式为：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>for</span> <span class=nx>k</span><span class=p>,</span> <span class=nx>v</span> <span class=o>:=</span> <span class=k>range</span> <span class=nx>set</span> <span class=p>{</span>
+    <span class=o>...</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>k 为索引，每次递增，v 为索引对应的值的拷贝。值得注意的是，由于 v 只是值的拷贝，任何对它的修改都不会影响集合中原来的值，除非索引是指针。</p><p>如果不需要索引，可以使用匿名变量<code>_</code>忽略它：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>for</span> <span class=nx>_</span><span class=p>,</span> <span class=nx>v</span> <span class=o>:=</span> <span class=k>range</span> <span class=nx>set</span> <span class=p>{</span>
+    <span class=o>...</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>但如果只需要索引而不需要值，可以直接省略不写：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>for</span> <span class=nx>k</span> <span class=o>:=</span> <span class=k>range</span> <span class=nx>set</span> <span class=p>{</span>
+    <span class=o>...</span>
+<span class=p>}</span>
+<span class=c1>// Output: 0 1 2 ...
+</span></code></pre></td></tr></table></div></div><p>字符串通过 for-range 结构获取的元素是 rune 类型。</p><h2 id=3-辅助语句>3. 辅助语句</h2><p>控制结构中，常用的辅助语句有：break、continue、goto、return。</p><p><code>break</code> 用来跳出循环，在 for 循环中跳出一层循环，在 switch 或 select 语句中，跳过整段代码块：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>for</span> <span class=nx>i</span><span class=o>:=</span><span class=mi>0</span><span class=p>;</span> <span class=nx>i</span><span class=p>&lt;</span><span class=mi>3</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span> <span class=p>{</span>
+    <span class=k>for</span> <span class=nx>j</span><span class=o>:=</span><span class=mi>0</span><span class=p>;</span> <span class=nx>j</span><span class=p>&lt;</span><span class=mi>10</span><span class=p>;</span> <span class=nx>j</span><span class=o>++</span> <span class=p>{</span>
+        <span class=k>if</span> <span class=nx>j</span><span class=p>&gt;</span><span class=mi>5</span> <span class=p>{</span>
+            <span class=k>break</span>   
+        <span class=p>}</span>
+        <span class=nb>print</span><span class=p>(</span><span class=nx>j</span><span class=p>)</span>
+    <span class=p>}</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s>&#34;  &#34;</span><span class=p>)</span>
+<span class=p>}</span>
+<span class=c1>// Output:
+</span><span class=c1></span><span class=c1>// 012345 012345 012345
+</span></code></pre></td></tr></table></div></div><p><code>continue</code> 用来忽略剩余的循环体直接进入下一次循环，只存在于for循环中：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=p>&lt;</span> <span class=mi>10</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=nx>i</span> <span class=o>==</span> <span class=mi>5</span> <span class=p>{</span>
+        <span class=k>continue</span>
+    <span class=p>}</span>
+    <span class=nb>print</span><span class=p>(</span><span class=nx>i</span><span class=p>)</span>
+    <span class=nb>print</span><span class=p>(</span><span class=s>&#34; &#34;</span><span class=p>)</span>
+<span class=p>}</span>
+<span class=c1>// Output:
+</span><span class=c1></span><span class=c1>// 0 1 2 3 4 6 7 8 9
+</span></code></pre></td></tr></table></div></div><p>for、switch 或 select 语句都可以配合<strong>标签</strong>（label）形式的标识符使用，即某一行第一个以冒号（<code>:</code>）结尾的单词，下例中 continue 语句指向 LABEL1，当执行到该语句时，就会跳转到 LABEL1 标签的位置起继续执行，不过此时注意循环体内的变量并不会被释放，当 j==4 循环跳出后，i 会自动变成下一个循环的值，不会陷入无限循环。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=kn>package</span> <span class=nx>main</span>
+
+<span class=kn>import</span> <span class=s>&#34;fmt&#34;</span>
+
+<span class=kd>func</span> <span class=nf>main</span><span class=p>(</span><span class=p>)</span> <span class=p>{</span>
+<span class=nx>LABEL1</span><span class=p>:</span>
+	<span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;=</span> <span class=mi>5</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span> <span class=p>{</span>
+		<span class=k>for</span> <span class=nx>j</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>j</span> <span class=o>&lt;=</span> <span class=mi>5</span><span class=p>;</span> <span class=nx>j</span><span class=o>++</span> <span class=p>{</span>
+			<span class=k>if</span> <span class=nx>j</span> <span class=o>==</span> <span class=mi>4</span> <span class=p>{</span>
+				<span class=k>continue</span> <span class=nx>LABEL1</span>
+			<span class=p>}</span>
+			<span class=nx>fmt</span><span class=p>.</span><span class=nf>Printf</span><span class=p>(</span><span class=s>&#34;i is: %d, and j is: %d\n&#34;</span><span class=p>,</span> <span class=nx>i</span><span class=p>,</span> <span class=nx>j</span><span class=p>)</span>
+		<span class=p>}</span>
+	<span class=p>}</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>标签的名称和一般的标识符相同，都是大小写敏感的，但为了可读性，一般全部使用大写字母。同变量相同，标签定义未使用也会导致编译错误。</p><p><code>goto</code> 关键字是配合标签使用的，但这种用法并不被推荐，因为很可能导致糟糕的代码结构，一如当年的 PASCAL。</p><p>逆序的标签虽然可能导致错误，但正序的标签（标签位于 goto 语句之后）则可以正常使用，但标签和 goto 之间不能有新定义变量的语句，否则会导致编译失败。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-go data-lang=go><span class=c1>// compile error goto2.go:8: goto TARGET jumps over declaration of b at goto2.go:8
+</span><span class=c1></span><span class=kn>package</span> <span class=nx>main</span>
+
+<span class=kn>import</span> <span class=s>&#34;fmt&#34;</span>
+
+<span class=kd>func</span> <span class=nf>main</span><span class=p>(</span><span class=p>)</span> <span class=p>{</span>
+  <span class=nx>a</span> <span class=o>:=</span> <span class=mi>1</span>
+	<span class=k>goto</span> <span class=nx>TARGET</span> <span class=c1>// compile error
+</span><span class=c1></span>	<span class=nx>b</span> <span class=o>:=</span> <span class=mi>9</span>
+<span class=nx>TARGET</span><span class=p>:</span>  
+	<span class=nx>b</span> <span class=o>+=</span> <span class=nx>a</span>
+	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Printf</span><span class=p>(</span><span class=s>&#34;a is %v *** b is %v&#34;</span><span class=p>,</span> <span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span>
+<span class=p>}</span>
+</code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 2023-02-10</span></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/golang%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%804-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/index.md target=_blank>Read Markdown</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="Share on 微博" data-sharer=weibo data-url=http://Cloud1998.github.io/golang%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%804-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/ data-title=Golang语法基础4-运算符与流程控制><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/golang%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/>Golang语法基础</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/golang%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%803-%E5%B8%B8%E9%87%8F%E5%8F%98%E9%87%8F%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/ class=prev rel=prev title=Golang语法基础3-常量、变量与基本数据类型><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Golang语法基础3-常量、变量与基本数据类型</a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>Powered by <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.63.2">Hugo</a> | Theme - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden=true></i>LoveIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2023</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>Ge Yunfei</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i></a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/katex/katex.min.css><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript src=/lib/sharer/sharer.min.js></script><script type=text/javascript src=/lib/katex/katex.min.js></script><script type=text/javascript src=/lib/katex/contrib/auto-render.min.js></script><script type=text/javascript src=/lib/katex/contrib/copy-tex.min.js></script><script type=text/javascript src=/lib/katex/contrib/mhchem.min.js></script><script type=text/javascript src=/lib/cookieconsent/cookieconsent.min.js></script><script type=text/javascript>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
