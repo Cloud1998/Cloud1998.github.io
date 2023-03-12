@@ -1,10 +1,9 @@
 ---
 title: Golang语法基础7-结构体与方法
-date: 2023-02-25
+date: 2023-03-12
 tags: [Golang语法基础]
 categories: [编程技术]
 slug: golang basic grammer 7 struct and method
-draft: true
 ---
 
 本文介绍 Golang 中的结构体与方法。
